@@ -179,6 +179,8 @@ const _memoizedRenderDefs = _renderDefs();
  * @param  {string} highlightedLink.source - id of source node for highlighted link.
  * @param  {string} highlightedLink.target - id of target node for highlighted link.
  * @param  {number} transform - value that indicates the amount of zoom transformation.
+ * @param  {Object.<string, Object>} visNodes - an object containing all nodes mapped by their id.
+ * @param  {Array.<Object>} visLinks - array of links {@link #Link|Link}.
  * @returns {Object} returns an object containing the generated nodes and links that form the graph.
  * @memberof Graph/renderer
  */
@@ -191,11 +193,30 @@ function renderGraph(
   config,
   highlightedNode,
   highlightedLink,
-  transform
+  transform,
+  visNodes,
+  visLinks,
+  animate
 ) {
+  let usedNodes = nodes;
+  let usedLinks = links;
+  if (!animate) {
+    usedNodes = visNodes;
+    usedLinks = visLinks;
+  }
+
   return {
-    nodes: _renderNodes(nodes, nodeCallbacks, config, highlightedNode, highlightedLink, transform, linksMatrix),
-    links: _renderLinks(nodes, links, linksMatrix, config, linkCallbacks, highlightedNode, highlightedLink, transform),
+    nodes: _renderNodes(usedNodes, nodeCallbacks, config, highlightedNode, highlightedLink, transform, linksMatrix),
+    links: _renderLinks(
+      usedNodes,
+      usedLinks,
+      linksMatrix,
+      config,
+      linkCallbacks,
+      highlightedNode,
+      highlightedLink,
+      transform
+    ),
     defs: _memoizedRenderDefs(config),
   };
 }

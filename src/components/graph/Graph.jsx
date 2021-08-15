@@ -206,6 +206,7 @@ export default class Graph extends React.Component {
    * @returns {undefined}
    */
   _onDragEnd = () => {
+    this.setState({ animate: false });
     this.isDraggingNode = false;
 
     if (this.state.draggedNode) {
@@ -259,6 +260,7 @@ export default class Graph extends React.Component {
    * @returns {undefined}
    */
   _onDragStart = () => {
+    this.setState({ animate: true });
     this.isDraggingNode = true;
     this.pauseSimulation();
 
@@ -525,6 +527,26 @@ export default class Graph extends React.Component {
     }
   };
 
+  isEquivalent = (a, b, epsilon = 0) => {
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    if (aProps.length != bProps.length) {
+      return false;
+    }
+
+    for (var i = 0; i < aProps.length; i++) {
+      var propName = aProps[i];
+
+      const sum = Math.abs(a[propName], b[propName]);
+      if (sum > epsilon) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   /**
    * Calls d3 simulation.restart().<br/>
    * {@link https://github.com/d3/d3-force#simulation_restart}
@@ -628,6 +650,20 @@ export default class Graph extends React.Component {
 
     // graph zoom and drag&drop all network
     this._zoomConfig();
+
+    window.setInterval(() => {
+      if (!this.state.prevNodes) {
+        this.setState({ prevNodes: this.state.nodes });
+      } else {
+        if (this.isEquivalent(this.state.nodes, this.state.prevNodes, 0.5)) {
+          const visNodes = JSON.parse(JSON.stringify(this.state.nodes));
+          const visLinks = JSON.parse(JSON.stringify(this.state.d3Links));
+          this.setState({ visNodes: visNodes, visLinks: visLinks });
+          this.pauseSimulation();
+        }
+        this.setState({ prevNodes: this.state.nodes });
+      }
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -645,46 +681,52 @@ export default class Graph extends React.Component {
   }
 
   render() {
-    const { nodes, links, defs } = renderGraph(
-      this.state.nodes,
-      {
-        onClickNode: this.onClickNode,
-        onDoubleClickNode: this.onDoubleClickNode,
-        onRightClickNode: this.onRightClickNode,
-        onMouseOverNode: this.onMouseOverNode,
-        onMouseOut: this.onMouseOutNode,
-      },
-      this.state.d3Links,
-      this.state.links,
-      {
-        onClickLink: this.props.onClickLink,
-        onRightClickLink: this.props.onRightClickLink,
-        onMouseOverLink: this.onMouseOverLink,
-        onMouseOutLink: this.onMouseOutLink,
-      },
-      this.state.config,
-      this.state.highlightedNode,
-      this.state.highlightedLink,
-      this.state.transform.k
-    );
+    if (this.state.visNodes) {
+      const { nodes, links, defs } = renderGraph(
+        this.state.nodes,
+        {
+          onClickNode: this.onClickNode,
+          onDoubleClickNode: this.onDoubleClickNode,
+          onRightClickNode: this.onRightClickNode,
+          onMouseOverNode: this.onMouseOverNode,
+          onMouseOut: this.onMouseOutNode,
+        },
+        this.state.d3Links,
+        this.state.links,
+        {
+          onClickLink: this.props.onClickLink,
+          onRightClickLink: this.props.onRightClickLink,
+          onMouseOverLink: this.onMouseOverLink,
+          onMouseOutLink: this.onMouseOutLink,
+        },
+        this.state.config,
+        this.state.highlightedNode,
+        this.state.highlightedLink,
+        this.state.transform.k,
+        this.state.visNodes,
+        this.state.visLinks,
+        this.state.animate || false
+      );
 
-    const svgStyle = {
-      height: this.state.config.height,
-      width: this.state.config.width,
-    };
+      const svgStyle = {
+        height: this.state.config.height,
+        width: this.state.config.width,
+      };
 
-    const containerProps = this._generateFocusAnimationProps();
+      const containerProps = this._generateFocusAnimationProps();
 
-    return (
-      <div id={`${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`}>
-        <svg name={`svg-container-${this.state.id}`} style={svgStyle} onClick={this.onClickGraph}>
-          {defs}
-          <g id={`${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
-            {links}
-            {nodes}
-          </g>
-        </svg>
-      </div>
-    );
+      return (
+        <div id={`${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`}>
+          <svg name={`svg-container-${this.state.id}`} style={svgStyle} onClick={this.onClickGraph}>
+            {defs}
+            <g id={`${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
+              {links}
+              {nodes}
+            </g>
+          </svg>
+        </div>
+      );
+    }
+    return <div />;
   }
 }
