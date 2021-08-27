@@ -85,10 +85,11 @@ function _initializeLinks(graphLinks, config) {
 
     const value = config.collapsible && l.isHidden ? 0 : l.value || 1;
 
-    links[source][target] = value;
-
-    if (!config.directed) {
+    if (config.linkHighlightType === "all" || config.linkHighlightType === "incoming") {
       links[target][source] = value;
+    }
+    if (config.linkHighlightType === "all" || config.linkHighlightType === "outgoing") {
+      links[source][target] = value;
     }
 
     return links;

@@ -285,6 +285,7 @@ export default {
   highlightDegree: 1,
   highlightOpacity: 1,
   linkHighlightBehavior: false,
+  linkHighlightType: "outgoing",
   maxZoom: 8,
   minZoom: 0.1,
   initialZoom: null,
