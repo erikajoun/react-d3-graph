@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1421bd08-19be-495b-bbe7-9581cf99f91c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/graph/graph.helper.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/graph/graph.builder.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/graph/collapse.helper.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/graph/graph.renderer.jsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/graph/graph.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/graph/Graph.jsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1vsadHDgEbIhG1ZoqbcrKYIEruA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1421bd08-19be-495b-bbe7-9581cf99f91c" name="Default Changelist" comment="" />
+      <created>1627353335930</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627353335930</updated>
+      <workItem from="1627353340299" duration="653000" />
+      <workItem from="1627371422840" duration="2088000" />
+      <workItem from="1627853933915" duration="265000" />
+      <workItem from="1627863212277" duration="10445000" />
+      <workItem from="1628022571130" duration="4236000" />
+      <workItem from="1628100897853" duration="5226000" />
+      <workItem from="1628295431468" duration="6784000" />
+      <workItem from="1628448531748" duration="1777000" />
+      <workItem from="1628551480512" duration="1879000" />
+      <workItem from="1628631284985" duration="3893000" />
+      <workItem from="1628717292262" duration="4118000" />
+      <workItem from="1628798669707" duration="11742000" />
+      <workItem from="1629509100277" duration="426000" />
+      <workItem from="1629738187949" duration="585000" />
+      <workItem from="1629743601259" duration="318000" />
+      <workItem from="1629746191685" duration="175000" />
+      <workItem from="1629756784376" duration="419000" />
+      <workItem from="1629760710432" duration="520000" />
+      <workItem from="1629775870573" duration="557000" />
+      <workItem from="1629836986210" duration="1177000" />
+      <workItem from="1629846245790" duration="2097000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
