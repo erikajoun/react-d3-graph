@@ -389,7 +389,7 @@ export default class Graph extends React.Component {
       this.nodeClickTimer = clearTimeout(this.nodeClickTimer);
     }
 
-    this.setState({ clickedNode: true });
+    this.setState({ clickedNodeId: clickedNodeId });
   };
 
   /**
@@ -600,15 +600,11 @@ export default class Graph extends React.Component {
     if (!this.state.config.staticGraph && (this.state.newGraphElements || this.state.d3ConfigUpdated)) {
       this._graphBindD3ToReactComponent();
 
-      if (this.state.clickedNode) {
+      if (this.state.clickedNodeId) {
         this.pauseSimulation();
       }
 
       if (this.state.newGraphElements) {
-        this.restartSimulation();
-      }
-
-      if (!this.state.config.staticGraphWithDragAndDrop) {
         this.restartSimulation();
       }
 
